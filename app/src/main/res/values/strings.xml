@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SoundCard</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_admin_menu">AdminMenu</string>
+    <string name="title_activity_letter_menu">LetterMenu</string>
+    <string name="title_activity_game">GameActivity</string>
+</resources>
