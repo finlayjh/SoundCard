@@ -3,7 +3,6 @@ package com.example.soundcard;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Switch;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,20 +17,20 @@ public class UserManager {
     private SharedPreferences sharedPrefs;
     private SharedPreferences.Editor editor;
     private String currentUser;
+    private Case currentCase;
     private String userLowercaseLetters;
     private String userUppercaseLetters;
     private String userBothCaseLetters;
 
 
-    public UserManager(Context context, String userName){
+    protected UserManager(Context context, String userName){
         Log.d("LOADING USERMANAGER", "...");
         currentUser = userName;
-        loadUser(context);
+        sharedPrefs = context.getSharedPreferences(currentUser, Context.MODE_PRIVATE);
+        loadUser();
     }
 
-    private void loadUser(Context context){
-        sharedPrefs = context.getSharedPreferences(currentUser, Context.MODE_PRIVATE);
-
+    private void loadUser(){
         String allLetters = sharedPrefs.getString(USER_LETTERS, null);
         userLowercaseLetters = "";
         userUppercaseLetters = "";
@@ -60,8 +59,7 @@ public class UserManager {
         }
     }
 
-    private void saveUser(Context context){
-        sharedPrefs = context.getSharedPreferences(currentUser, Context.MODE_PRIVATE);
+    private void saveUser(){
         editor = sharedPrefs.edit();
 
         //formatting with :
@@ -73,44 +71,42 @@ public class UserManager {
 
 
     //temporary?
-    public void clearUser(Context context, Case myCase){
-        sharedPrefs = context.getSharedPreferences(currentUser, Context.MODE_PRIVATE);
+    protected void clearUser(){
         editor = sharedPrefs.edit();
-        if(myCase == Case.UPPERCASE){
+        if(currentCase == Case.UPPERCASE){
             userUppercaseLetters = "";
         }
-        else if(myCase == Case.LOWERCASE){
+        else if(currentCase == Case.LOWERCASE){
             userLowercaseLetters = "";
         }
-        else if(myCase == Case.BOTH){
+        else if(currentCase == Case.BOTH){
             userBothCaseLetters = "";
         }
-        saveUser(context);
+        saveUser();
     }
 
-    public void addUserLetter( Context context, char letter, Case myCase){
+    protected void addUserLetter(char letter){
         Log.d("TESTING", "in adduserletters");
-        if(myCase == Case.UPPERCASE){
+        if(currentCase == Case.UPPERCASE){
             if(!userUppercaseLetters.contains(String.valueOf(letter))){
                 userUppercaseLetters += letter;
             }
         }
-        else if(myCase == Case.LOWERCASE){
+        else if(currentCase == Case.LOWERCASE){
             if(!userLowercaseLetters.contains(String.valueOf(letter))){
                 userLowercaseLetters += letter;
             }
         }
-        else if(myCase == Case.BOTH){
+        else if(currentCase == Case.BOTH){
             letter = Character.toUpperCase(letter);
             if(!userBothCaseLetters.contains(String.valueOf(letter))){
                 userBothCaseLetters += letter;
             }
         }
-        saveUser(context);
+        saveUser();
     }
 
-    public void saveTestResults(Context context,String rightAns, String wrongAns, Boolean isBothCase){
-        sharedPrefs = context.getSharedPreferences(currentUser, Context.MODE_PRIVATE);
+    protected void saveTestResults(String rightAns, String wrongAns, Boolean isBothCase){
         editor = sharedPrefs.edit();
 
         String oldData = sharedPrefs.getString(USER_DATA, null);
@@ -130,16 +126,28 @@ public class UserManager {
         editor.apply();
     }
 
-    public String getUserLetters(Case myCase){
-        if(myCase == Case.UPPERCASE){
+    protected String getUserLetters(){
+        if(currentCase == Case.UPPERCASE){
             return userUppercaseLetters;
         }
-        else if(myCase == Case.LOWERCASE){
+        else if(currentCase == Case.LOWERCASE){
             return userLowercaseLetters;
         }
-        else if(myCase == Case.BOTH){
+        else if(currentCase == Case.BOTH){
             return userBothCaseLetters;
         }
         return null;
+    }
+
+    protected String getCurrentUser(){
+        return currentUser;
+    }
+
+    protected void setCurrentCase(Case mCase){
+        currentCase = mCase;
+    }
+
+    protected Case getCurrentCase(){
+        return currentCase;
     }
 }

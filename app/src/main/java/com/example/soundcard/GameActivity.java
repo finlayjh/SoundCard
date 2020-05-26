@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import java.lang.String;
 
+import javax.xml.transform.Result;
+
 public class GameActivity extends AppCompatActivity implements GameManager.GameManagerInterface {
 
     Button btn1;
@@ -53,7 +55,7 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
         btn2 = findViewById(R.id.Option2);
         btn3 = findViewById(R.id.Option3);
 
-        soundManager = LetterMenu.soundManager;
+        soundManager = LetterSelectPresenter.soundManager;
         gameManager = new GameManager(this);
 
         //break for game type
@@ -137,7 +139,7 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
         });
 
         //Set the location of the window on the screen
-        popupWindow.showAtLocation((ConstraintLayout) findViewById(R.id.content_game), Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(findViewById(R.id.content_game), Gravity.CENTER, 0, 0);
 
         soundManager.playSound();
     }
@@ -163,10 +165,8 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
         counter.setText(String.valueOf(count));
         // if @3 celebration animation
         if(count == 2){
-            Intent intent = new Intent(this, LetterMenu.class);
-            intent.putExtra("game_type", "basic_game");
-            intent.putExtra("buttonName", gameManager.getCurrentLetter());
-            setResult(RESULT_OK, intent);
+            Intent intent = new Intent(this, LetterSelectActivity.class);
+            setResult(2, intent);
             finish();
             return false;
         }
@@ -174,11 +174,10 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
     }
 
     public void finishTest(String correctAns, String wrongAns){
-        Intent intent = new Intent(this, LetterMenu.class);
-        intent.putExtra("game_type", "test_game");
+        Intent intent = new Intent(this, LetterSelectActivity.class);
         intent.putExtra("correct_answers", correctAns);
         intent.putExtra("wrong_answers", wrongAns);
-        setResult(RESULT_OK, intent);
+        setResult(3, intent);
         finish();
     }
 

@@ -75,7 +75,7 @@ public class AdminMenu extends AppCompatActivity implements AdapterView.OnItemSe
         List<String> categories = adminMenuManager.getUserList();
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -92,17 +92,10 @@ public class AdminMenu extends AppCompatActivity implements AdapterView.OnItemSe
     }
 
     public void loadGame(View v){
-        Button b = (Button)v;
         String name = userSelectSpinner.getSelectedItem().toString();
-        if(name != null && name != ""){
-            Intent intent = new Intent(v.getContext(), LetterMenu.class);
+        if(!name.equals("")){
+            Intent intent = new Intent(this, GameSelectActivity.class);
             intent.putExtra("current_user", name);
-            if(b.getId() == R.id.GOTO_NAMES){
-                intent.putExtra("starting_case", Case.UPPERCASE);
-            }
-            else if(b.getId() == R.id.GOTO_SOUNDS){
-                intent.putExtra("starting_case", Case.BOTH);
-            }
             startActivityForResult(intent, 0);
         }
         else{

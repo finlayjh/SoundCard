@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LetterMenu"
+    tools:context=".LetterSelectActivity"
     tools:showIn="@layout/activity_letter_menu">
 
     <Button
         android:id="@+id/BUTTON_A"
         android:layout_width="56dp"
         android:layout_height="48dp"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         android:text="A"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_F"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_B"
@@ -27,7 +27,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="248dp"
         android:text="U"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_V"
         app:layout_constraintHorizontal_bias="1.0"
@@ -37,7 +37,7 @@
         android:id="@+id/BUTTON_F"
         android:layout_width="56dp"
         android:layout_height="48dp"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         android:text="F"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_K"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_G"
@@ -49,7 +49,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="P"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_U"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_Q"
         app:layout_constraintHorizontal_bias="1.0"
@@ -59,7 +59,7 @@
         android:id="@+id/BUTTON_K"
         android:layout_width="56dp"
         android:layout_height="48dp"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         android:text="K"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_P"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_L"
@@ -71,7 +71,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="D"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_I"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_E"
         app:layout_constraintTop_toTopOf="parent"
@@ -82,7 +82,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="I"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_N"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_J" />
 
@@ -92,7 +92,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="248dp"
         android:text="X"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_Y" />
 
@@ -101,7 +101,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="N"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_S"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_O" />
 
@@ -110,7 +110,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="S"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_X"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_T" />
 
@@ -121,7 +121,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:text="E"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_J"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -134,7 +134,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:text="J"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_O"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -145,7 +145,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:text="T"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_Y"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -157,7 +157,7 @@
         android:layout_marginRight="56dp"
         android:layout_marginBottom="248dp"
         android:text="Y"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -168,7 +168,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:text="O"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_T"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -177,7 +177,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="C"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_H"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_D"
         app:layout_constraintTop_toTopOf="parent"
@@ -188,7 +188,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="M"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_R"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_N" />
 
@@ -197,7 +197,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="R"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_W"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_S" />
 
@@ -207,7 +207,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="200dp"
         android:text="Z"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
@@ -218,7 +218,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="W"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_Z"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_X" />
 
@@ -227,7 +227,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="H"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_M"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_I" />
 
@@ -235,7 +235,7 @@
         android:id="@+id/BUTTON_B"
         android:layout_width="56dp"
         android:layout_height="48dp"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         android:text="B"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_G"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_C"
@@ -247,7 +247,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="Q"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_V"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_R" />
 
@@ -257,7 +257,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="248dp"
         android:text="V"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_W" />
 
@@ -266,7 +266,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="G"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_L"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_H" />
 
@@ -275,7 +275,7 @@
         android:layout_width="56dp"
         android:layout_height="48dp"
         android:text="L"
-        android:onClick="selectLetter"
+        android:onClick="onLetterSelect"
         app:layout_constraintBottom_toTopOf="@+id/BUTTON_Q"
         app:layout_constraintEnd_toStartOf="@+id/BUTTON_M" />
 
@@ -284,7 +284,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clear"
-        android:onClick="clearUser"
+        android:onClick="onClearUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -299,32 +299,5 @@
         app:layout_constraintStart_toStartOf="@+id/CLEAR_BUTTON"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/BUTTON_UPPERCASE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ABC"
-        android:onClick="swapCase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BUTTON_LOWERCASE"
-        app:layout_constraintHorizontal_bias="0.418"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
-
-    <Button
-        android:id="@+id/BUTTON_LOWERCASE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:text="abc"
-        android:onClick="swapCase"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
