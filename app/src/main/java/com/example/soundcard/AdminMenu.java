@@ -65,7 +65,7 @@ public class AdminMenu extends AppCompatActivity implements AdapterView.OnItemSe
     }
 
     public void openUserData(View v){
-        Intent intent = new Intent(v.getContext(), DataMenu.class);
+        Intent intent = new Intent(v.getContext(), DataActivity.class);
         intent.putExtra("current_user", userSelectSpinner.getSelectedItem().toString());
         startActivityForResult(intent, 0);
     }
