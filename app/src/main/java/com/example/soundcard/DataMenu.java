@@ -58,10 +58,6 @@ public class DataMenu extends AppCompatActivity {
         int pos = 0;
         Boolean cutOutTime = true;
         Boolean isBothCases = false;
-        if(dirtyAns.charAt(0) == '^'){
-            isBothCases = true;
-            dirtyAns = dirtyAns.substring(1);
-        }
         for(int i = 0; i<dirtyAns.length(); i++){
             if(cutOutTime){
                 ansHolder[pos] = dirtyAns.substring(i,i+12);
@@ -71,7 +67,10 @@ public class DataMenu extends AppCompatActivity {
             }
             else{
                 char letter = dirtyAns.charAt(i);
-                if(letter == '&'){
+                if(letter == '^'){
+                    isBothCases = true;
+                }
+                else if(letter == '&'){
                     ansHolder[pos] = answer;
                     pos++;
                     answer = "";
@@ -82,6 +81,7 @@ public class DataMenu extends AppCompatActivity {
                     answer = "";
                     testResultHistory.add(parseTestResults(ansHolder, isBothCases));
                     ansHolder = new String[]{"","",""};
+                    isBothCases = false;
                     cutOutTime = true;
                 }
                 else{
@@ -91,6 +91,7 @@ public class DataMenu extends AppCompatActivity {
         }
         ansHolder[pos] = answer;
         testResultHistory.add(parseTestResults(ansHolder, isBothCases));
+
     }
 
     private String parseTestResults(String[] data, Boolean isBoth){

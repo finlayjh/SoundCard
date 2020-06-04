@@ -1,31 +1,22 @@
 package com.example.soundcard;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import java.lang.String;
+import androidx.appcompat.app.AppCompatActivity;
 
-import javax.xml.transform.Result;
-
-public class GameActivity extends AppCompatActivity implements GameManager.GameManagerInterface {
+public class GameActivity extends AppCompatActivity implements GameContract.View{
 
     Button btn1;
     Button btn2;
@@ -33,10 +24,8 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
     TextView theCorrectAnsTextView;
     TextView counter;
     private Boolean isTeachingModel;
-    private Case currentCase;
 
-    private SoundManager soundManager;
-    private GameManager gameManager;
+    GamePresenter presenter;
 
 
     @Override
@@ -44,37 +33,33 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        Bundle bundle = getIntent().getExtras();
-        String gameType = bundle.getString("game_type");
-        currentCase = (Case)bundle.getSerializable("starting_case");
-
-        //store references
         theCorrectAnsTextView = findViewById(R.id.ShowLetter);
         counter = findViewById(R.id.WinCounter);
         btn1 = findViewById(R.id.Option1);
         btn2 = findViewById(R.id.Option2);
         btn3 = findViewById(R.id.Option3);
 
-        soundManager = LetterSelectPresenter.soundManager;
-        gameManager = new GameManager(this);
+        Bundle bundle = getIntent().getExtras();
+        String gameType = bundle.getString("game_type");
+
+
+        presenter = new GamePresenter(this);
 
         //break for game type
-        if(gameType.equals("basic_game")){
-            char currentLetter = bundle.getChar("current_char");
-            gameManager.setCurrentLetter(currentLetter);
+        if (gameType.equals("basic_game")) {
             isTeachingModel = true;
-        }else if(gameType.equals("test_game")){
-            String userLetters = bundle.getString("user_letters");
-            gameManager.loadTest(userLetters);
+        } else if (gameType.equals("test_game")) {
+            presenter.loadTest();
             isTeachingModel = false;
         }
     }
+
 
     @Override
     public void onAttachedToWindow() {
         if(isTeachingModel){
             super.onAttachedToWindow();
-            openTeachingModel(gameManager.getCurrentLetter());
+            openTeachingModel(presenter.getCurrentLetter());
         }
     }
 
@@ -119,11 +104,11 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                gameManager.loadBasicGame();
+                presenter.loadBasicGame();
             }
         });
         btnOnlyAnswer.setAllCaps(false);
-        if(currentCase == Case.BOTH){
+        if(presenter.getCase() == Case.BOTH){
             btnOnlyAnswer.setText(String.valueOf(letter) + String.valueOf((char)(letter+32)));
         }
         else{
@@ -141,27 +126,28 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
         //Set the location of the window on the screen
         popupWindow.showAtLocation(findViewById(R.id.content_game), Gravity.CENTER, 0, 0);
 
-        soundManager.playSound();
+        presenter.playSound();
     }
 
     public void playSound(View v){
-        soundManager.playSound();
+        presenter.playSound();
     }
 
     public void checkAnswer(View v){
         char c = ((Button)v).getText().charAt(0);
-        gameManager.checkAnswer(c);
+        presenter.checkAnswer(c);
     }
 
-    public void updateButtons(char nText1, char nText2, char nText3){
+    public void updateButtons(char nChar1, char nChar2, char nChar3){
         Log.d("TESTING", "update buttons");
-        btn1.setText(String.valueOf(nText1));
-        btn2.setText(String.valueOf(nText2));
-        btn3.setText(String.valueOf(nText3));
-        soundManager.playSound();
+        btn1.setText(String.valueOf(nChar1));
+        btn2.setText(String.valueOf(nChar2));
+        btn3.setText(String.valueOf(nChar3));
+        presenter.playSound();
     }
 
-    public boolean updateCounter(int count){
+    // returns true if continue
+    public Boolean updateWinCounter(int count){
         counter.setText(String.valueOf(count));
         // if @3 celebration animation
         if(count == 2){
@@ -174,20 +160,10 @@ public class GameActivity extends AppCompatActivity implements GameManager.GameM
     }
 
     public void finishTest(String correctAns, String wrongAns){
-        Intent intent = new Intent(this, LetterSelectActivity.class);
-        intent.putExtra("correct_answers", correctAns);
-        intent.putExtra("wrong_answers", wrongAns);
-        setResult(3, intent);
         finish();
     }
 
     public void showLetter(char c){
         theCorrectAnsTextView.setText(String.valueOf(c));
     }
-
-    public void setCurrentLetter(char c){
-        soundManager.setCurrentLetter(c);
-    }
-
-    public Case getCurrentCase(){return currentCase;}
 }

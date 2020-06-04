@@ -18,6 +18,7 @@ public class UserManager {
     private SharedPreferences.Editor editor;
     private String currentUser;
     private Case currentCase;
+    private char currentLetter;
     private String userLowercaseLetters;
     private String userUppercaseLetters;
     private String userBothCaseLetters;
@@ -106,20 +107,21 @@ public class UserManager {
         saveUser();
     }
 
-    protected void saveTestResults(String rightAns, String wrongAns, Boolean isBothCase){
+    protected void saveTestResults(String rightAns, String wrongAns){
         editor = sharedPrefs.edit();
 
         String oldData = sharedPrefs.getString(USER_DATA, null);
         String sdf = new SimpleDateFormat("MMddyyyyHHmm", Locale.getDefault()).format(new Date());
-        String newData = sdf + rightAns.toUpperCase() + "&" + wrongAns.toUpperCase();
+        String newData = rightAns.toUpperCase() + "&" + wrongAns.toUpperCase();
 
         String finalData = "";
-        if(isBothCase){
+        finalData += sdf;
+        if(currentCase == Case.BOTH){
             finalData += "^";
         }
         finalData += newData;
         if(oldData != null){
-            finalData += ":" + oldData.substring(1);
+            finalData += ":" + oldData;
         }
 
         editor.putString(USER_DATA, finalData);
@@ -150,4 +152,8 @@ public class UserManager {
     protected Case getCurrentCase(){
         return currentCase;
     }
+
+    protected char getCurrentLetter(){return currentLetter;}
+
+    protected void setCurrentLetter(char c){currentLetter =c;}
 }
