@@ -1,11 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LetterMenu">
+    android:id="@+id/letter_menu_container"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <include layout="@layout/content_letter_menu" />
+    <RelativeLayout
+        android:id="@+id/letter_menu_contents"
+        android:layout_width="1080px"
+        android:layout_height="1920px"
+        android:layout_gravity="top">
+        <include
+            android:id="@+id/toolbar_default"
+            layout="@layout/toolbar_default" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_default"
+            android:layout_centerHorizontal="true"
+            android:text="Letter Names"
+            android:layout_marginBottom="10px"
+            android:layout_marginTop="30px"
+            android:textSize="25px"/>
+
+        <RelativeLayout
+            android:id="@+id/AtoD_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_title">
+
+            <Button
+                android:id="@+id/btn_A"
+                android:onClick="onLetterSelect"
+                android:text="A"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_B"
+                android:onClick="onLetterSelect"
+                android:text="B"
+                android:layout_toRightOf="@+id/btn_A"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_C"
+                android:text="C"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_B"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_D"
+                android:text="D"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_C"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/EtoH_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/AtoD_contents">
+
+            <Button
+                android:id="@+id/btn_E"
+                android:onClick="onLetterSelect"
+                android:text="E"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_F"
+                android:onClick="onLetterSelect"
+                android:text="F"
+                android:layout_toRightOf="@+id/btn_E"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_G"
+                android:text="G"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_F"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_H"
+                android:text="H"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_G"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+        android:id="@+id/ItoL_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/EtoH_contents">
+
+        <Button
+            android:id="@+id/btn_I"
+            android:onClick="onLetterSelect"
+            android:text="I"
+            style="@style/letter_menu_button"/>
+
+        <Button
+            android:id="@+id/btn_J"
+            android:onClick="onLetterSelect"
+            android:text="J"
+            android:layout_toRightOf="@+id/btn_I"
+            style="@style/letter_menu_button"/>
+
+        <Button
+            android:id="@+id/btn_K"
+            android:text="K"
+            android:onClick="onLetterSelect"
+            android:layout_toRightOf="@+id/btn_J"
+            style="@style/letter_menu_button"/>
+
+        <Button
+            android:id="@+id/btn_L"
+            android:text="L"
+            android:onClick="onLetterSelect"
+            android:layout_toRightOf="@+id/btn_K"
+            style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/MtoP_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ItoL_contents">
+
+            <Button
+                android:id="@+id/btn_M"
+                android:onClick="onLetterSelect"
+                android:text="M"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_N"
+                android:onClick="onLetterSelect"
+                android:text="N"
+                android:layout_toRightOf="@+id/btn_M"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_O"
+                android:text="0"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_N"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_P"
+                android:text="P"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_O"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/QtoT_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/MtoP_contents">
+
+            <Button
+                android:id="@+id/btn_Q"
+                android:onClick="onLetterSelect"
+                android:text="Q"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_R"
+                android:onClick="onLetterSelect"
+                android:text="R"
+                android:layout_toRightOf="@+id/btn_Q"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_S"
+                android:text="S"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_R"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_T"
+                android:text="T"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_S"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/UtoX_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/QtoT_contents">
+
+            <Button
+                android:id="@+id/btn_U"
+                android:onClick="onLetterSelect"
+                android:text="U"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_V"
+                android:onClick="onLetterSelect"
+                android:text="V"
+                android:layout_toRightOf="@+id/btn_U"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_W"
+                android:text="W"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_V"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_X"
+                android:text="X"
+                android:onClick="onLetterSelect"
+                android:layout_toRightOf="@+id/btn_W"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/YtoZ_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/UtoX_contents">
+
+            <Button
+                android:id="@+id/btn_Y"
+                android:onClick="onLetterSelect"
+                android:text="U"
+                style="@style/letter_menu_button"/>
+
+            <Button
+                android:id="@+id/btn_Z"
+                android:onClick="onLetterSelect"
+                android:text="Z"
+                android:layout_toRightOf="@+id/btn_Y"
+                style="@style/letter_menu_button"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

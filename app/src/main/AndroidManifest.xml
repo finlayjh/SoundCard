@@ -10,23 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".GameActivity"
+            android:name=".LetterGameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".DataActivity"
+            android:name=".StudentDataActivity"
             android:label="DataMenu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".GameSelectActivity"
+            android:name=".LevelSelectActivity"
             android:label="GameSelectActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LetterSelectActivity"
+            android:name=".LetterMenuActivity"
             android:label="LetterSelectActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AdminMenu"
+            android:name=".StudentProfileActivity"
+            android:label="StudentProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".MainMenuActivity"
             android:label="@string/title_activity_admin_menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

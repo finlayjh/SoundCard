@@ -13,16 +13,15 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class UserDeleteDialog extends AppCompatDialogFragment {
+public class StudentDeleteDialog extends AppCompatDialogFragment {
 
     private EditText editTextNewUser;
     private DeleteUserDialogListener listener;
     private String deleteUserName;
     private TextView textViewConfirm;
 
-    public UserDeleteDialog(String deleteName){
+    public StudentDeleteDialog(String deleteName){
         deleteUserName = deleteName;
-
     }
 
     @Override
@@ -37,13 +36,12 @@ public class UserDeleteDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_confirm_user_delete, null);
+        View view = inflater.inflate(R.layout.dialog_student_delete, null);
 
         textViewConfirm = view.findViewById(R.id.CONFIRM_TEXT);
         textViewConfirm.setText("Delete " + deleteUserName + "?");
 
         builder.setView(view)
-                .setTitle(" ")
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -53,11 +51,9 @@ public class UserDeleteDialog extends AppCompatDialogFragment {
                 .setPositiveButton("CONFIRM?", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Boolean confirm = true;
-                        listener.deleteUser(confirm);
+                        listener.deleteUser(deleteUserName);
                     }
                 });
-        editTextNewUser = view.findViewById(R.id.edit_new_name);
         return builder.create();
     }
 
@@ -73,6 +69,6 @@ public class UserDeleteDialog extends AppCompatDialogFragment {
     }
 
     public interface DeleteUserDialogListener{
-        void deleteUser(Boolean confirm);
+        void deleteUser(String name);
     }
 }

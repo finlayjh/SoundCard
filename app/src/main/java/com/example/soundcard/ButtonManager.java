@@ -1,5 +1,6 @@
 package com.example.soundcard;
 
+import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -25,35 +26,36 @@ public class ButtonManager {
     public ButtonManager(View view){
         //this is probably wrong way
         buttonMap = new HashMap<>();
-        buttonMap.put("A", (Button)view.findViewById(R.id.BUTTON_A));
-        buttonMap.put("B", (Button)view.findViewById(R.id.BUTTON_B));
-        buttonMap.put("C", (Button)view.findViewById(R.id.BUTTON_C));
-        buttonMap.put("D", (Button)view.findViewById(R.id.BUTTON_D));
-        buttonMap.put("E", (Button)view.findViewById(R.id.BUTTON_E));
-        buttonMap.put("F", (Button)view.findViewById(R.id.BUTTON_F));
-        buttonMap.put("G", (Button)view.findViewById(R.id.BUTTON_G));
-        buttonMap.put("H", (Button)view.findViewById(R.id.BUTTON_H));
-        buttonMap.put("I", (Button)view.findViewById(R.id.BUTTON_I));
-        buttonMap.put("J", (Button)view.findViewById(R.id.BUTTON_J));
-        buttonMap.put("K", (Button)view.findViewById(R.id.BUTTON_K));
-        buttonMap.put("L", (Button)view.findViewById(R.id.BUTTON_L));
-        buttonMap.put("M", (Button)view.findViewById(R.id.BUTTON_M));
-        buttonMap.put("N", (Button)view.findViewById(R.id.BUTTON_N));
-        buttonMap.put("O", (Button)view.findViewById(R.id.BUTTON_O));
-        buttonMap.put("P", (Button)view.findViewById(R.id.BUTTON_P));
-        buttonMap.put("Q", (Button)view.findViewById(R.id.BUTTON_Q));
-        buttonMap.put("R", (Button)view.findViewById(R.id.BUTTON_R));
-        buttonMap.put("S", (Button)view.findViewById(R.id.BUTTON_S));
-        buttonMap.put("T", (Button)view.findViewById(R.id.BUTTON_T));
-        buttonMap.put("U", (Button)view.findViewById(R.id.BUTTON_U));
-        buttonMap.put("V", (Button)view.findViewById(R.id.BUTTON_V));
-        buttonMap.put("W", (Button)view.findViewById(R.id.BUTTON_W));
-        buttonMap.put("X", (Button)view.findViewById(R.id.BUTTON_X));
-        buttonMap.put("Y", (Button)view.findViewById(R.id.BUTTON_Y));
-        buttonMap.put("Z", (Button)view.findViewById(R.id.BUTTON_Z));
+        buttonMap.put("A", (Button)view.findViewById(R.id.btn_A));
+        buttonMap.put("B", (Button)view.findViewById(R.id.btn_B));
+        buttonMap.put("C", (Button)view.findViewById(R.id.btn_C));
+        buttonMap.put("D", (Button)view.findViewById(R.id.btn_D));
+        buttonMap.put("E", (Button)view.findViewById(R.id.btn_E));
+        buttonMap.put("F", (Button)view.findViewById(R.id.btn_F));
+        buttonMap.put("G", (Button)view.findViewById(R.id.btn_G));
+        buttonMap.put("H", (Button)view.findViewById(R.id.btn_H));
+        buttonMap.put("I", (Button)view.findViewById(R.id.btn_I));
+        buttonMap.put("J", (Button)view.findViewById(R.id.btn_J));
+        buttonMap.put("K", (Button)view.findViewById(R.id.btn_K));
+        buttonMap.put("L", (Button)view.findViewById(R.id.btn_L));
+        buttonMap.put("M", (Button)view.findViewById(R.id.btn_M));
+        buttonMap.put("N", (Button)view.findViewById(R.id.btn_N));
+        buttonMap.put("O", (Button)view.findViewById(R.id.btn_O));
+        buttonMap.put("P", (Button)view.findViewById(R.id.btn_P));
+        buttonMap.put("Q", (Button)view.findViewById(R.id.btn_Q));
+        buttonMap.put("R", (Button)view.findViewById(R.id.btn_R));
+        buttonMap.put("S", (Button)view.findViewById(R.id.btn_S));
+        buttonMap.put("T", (Button)view.findViewById(R.id.btn_T));
+        buttonMap.put("U", (Button)view.findViewById(R.id.btn_U));
+        buttonMap.put("V", (Button)view.findViewById(R.id.btn_V));
+        buttonMap.put("W", (Button)view.findViewById(R.id.btn_W));
+        buttonMap.put("X", (Button)view.findViewById(R.id.btn_X));
+        buttonMap.put("Y", (Button)view.findViewById(R.id.btn_Y));
+        buttonMap.put("Z", (Button)view.findViewById(R.id.btn_Z));
     }
 
     //also used to recolor single buttons
+    @TargetApi(16)
     public void loadUserButtons(String userLetters){
         Log.d("TESTING", "in loaduserbuttons");
         Log.d("its ya boi", "userletters: " + userLetters);
@@ -62,7 +64,7 @@ public class ButtonManager {
             if(Character.isLowerCase(userLetters.charAt(0))){offset = -32;}
             for (int i = 0; i < userLetters.length(); i++) {
                 Button b = buttonMap.get(Character.toString((char)(userLetters.charAt(i) + offset)));
-                b.getBackground().setColorFilter(redFilter);
+                b.setBackgroundResource(R.drawable.letter_menu_completed_btn);
             }
         }
     }

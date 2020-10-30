@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/teaching_model_container"
+    android:background="@drawable/teachingmodel_bg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ImageButton
+        android:id="@+id/btn_PlaySound"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/shadow_btn"
+        android:padding="10dp"
+        android:src="@drawable/sound"
+        android:scaleType="fitCenter"
+        android:onClick="playSound"/>
+
+    <Button
+        android:id="@+id/btn_only_option"
+        android:text="B"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shadow_btn"
+        android:textSize="80sp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"/>
+</RelativeLayout>

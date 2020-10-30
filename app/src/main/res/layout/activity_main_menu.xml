@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+
+    <RelativeLayout
+        android:id="@+id/main_menu_contents"
+        android:layout_width="1080px"
+        android:layout_height="1920px"
+        android:layout_gravity="top">
+
+        <include
+            android:id="@+id/toolbar_default"
+            layout="@layout/toolbar_default" />
+
+        <TextView
+            android:id="@+id/tv_main_menu_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WELCOME :)"
+            android:textSize="36px"
+            android:layout_below="@id/toolbar_default"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220px"
+            android:layout_marginBottom="220px"
+            android:textColor="#000000"/>
+
+        <RelativeLayout
+            android:id="@+id/student_select_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_below="@id/tv_main_menu_banner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="150px">
+
+            <Button
+                android:id="@+id/btn_add_student"
+                android:layout_width="120px"
+                android:layout_height="100px"
+                android:onClick="openNewUserDialog"
+                android:text="+"
+                android:textSize="20px"
+                android:padding="5px"
+                android:background="@drawable/new_student_btn"/>
+
+            <RelativeLayout
+                android:id="@+id/spinner_student_contents"
+                android:layout_width="800px"
+                android:layout_height="100px"
+                android:layout_toRightOf="@id/btn_add_student">
+
+                <Spinner
+                    android:id="@+id/spinner_student"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    style="@style/spinner_style"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/filter_select_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_below="@id/student_select_contents"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="250px">
+
+            <TextView
+                android:id="@+id/string_sort_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#000000"
+                android:text="sort by:"
+                android:textSize="15px"/>
+
+            <RelativeLayout
+                android:id="@+id/spinner_filter_contents"
+                android:layout_height="100px"
+                android:layout_width="600px"
+                android:layout_toRightOf="@id/string_sort_by">
+
+                <Spinner
+                    android:id="@+id/spinner_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/default_btn"
+            android:layout_below="@id/filter_select_contents"
+            android:onClick="loadGame"
+            android:layout_centerHorizontal="true"
+            android:padding="150px"
+            android:text="@string/start"
+            android:textAllCaps="true"
+            android:textSize="36px" />
+
+    </RelativeLayout>
+
+</FrameLayout>

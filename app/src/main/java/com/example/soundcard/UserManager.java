@@ -13,10 +13,12 @@ public class UserManager {
 
     private final static String USER_LETTERS = "USER_LETTERS";
     private final static String USER_DATA = "USER_DATA";
+    private final static String USER_INFO = "USER_INFO";
+
+    private String currentUser;
 
     private SharedPreferences sharedPrefs;
     private SharedPreferences.Editor editor;
-    private String currentUser;
     private Case currentCase;
     private char currentLetter;
     private String userLowercaseLetters;
@@ -72,16 +74,18 @@ public class UserManager {
 
 
     //temporary?
-    protected void clearUser(){
+    protected void clearUser(Case mCase){
         editor = sharedPrefs.edit();
-        if(currentCase == Case.UPPERCASE){
-            userUppercaseLetters = "";
-        }
-        else if(currentCase == Case.LOWERCASE){
-            userLowercaseLetters = "";
-        }
-        else if(currentCase == Case.BOTH){
-            userBothCaseLetters = "";
+        switch(mCase){
+            case UPPERCASE:
+                userUppercaseLetters = "";
+                break;
+            case LOWERCASE:
+                userLowercaseLetters = "";
+                break;
+            case BOTH:
+                userBothCaseLetters = "";
+                break;
         }
         saveUser();
     }
@@ -107,12 +111,31 @@ public class UserManager {
         saveUser();
     }
 
+    protected void advanceUser(int level){
+        Log.d("TESTING", "hello: " + level);
+        if(level > 0){
+            userUppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            if(level > 1){
+                userLowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+            }
+
+            saveUser();
+        }
+    }
+
     protected void saveTestResults(String rightAns, String wrongAns){
         editor = sharedPrefs.edit();
 
         String oldData = sharedPrefs.getString(USER_DATA, null);
         String sdf = new SimpleDateFormat("MMddyyyyHHmm", Locale.getDefault()).format(new Date());
-        String newData = rightAns.toUpperCase() + "&" + wrongAns.toUpperCase();
+        String newData;
+        if(currentCase == Case.LOWERCASE){
+            newData = rightAns + "&" + wrongAns;
+        }
+        else{
+            newData = rightAns.toUpperCase() + "&" + wrongAns.toUpperCase();
+        }
 
         String finalData = "";
         finalData += sdf;
@@ -139,6 +162,26 @@ public class UserManager {
             return userBothCaseLetters;
         }
         return null;
+    }
+
+    public int[] getLessonsCompleted(){
+        int numCompleted[] = {0,0,0};
+        Log.d("testing", "letter count: " + userUppercaseLetters.length() + userLowercaseLetters.length() + userBothCaseLetters.length());
+        if(userUppercaseLetters.length() > 25){
+            numCompleted[0] = 1;
+        }
+        if(userLowercaseLetters.length() > 25){
+            numCompleted[1] = 1;
+        }
+        if(userBothCaseLetters.length() > 25){
+            numCompleted[2] = 1;
+        }
+        return numCompleted;
+    }
+
+    public int[] getAllNumLetters(){
+        return new int[]{userUppercaseLetters.length(),userLowercaseLetters.length(),userBothCaseLetters.length()};
+
     }
 
     protected String getCurrentUser(){

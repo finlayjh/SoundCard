@@ -1,11 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#056676</item>
+        <item name="colorPrimaryDark">#056676</item>
+        <item name="colorAccent">#056676</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:fontFamily" tools:targetApi="16">@font/milky_nice_clean</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -13,8 +15,46 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/rounded_spinner</item>
+        <item name="android:popupBackground">#DFFFFFFF</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily" tools:targetApi="16">@font/milky_nice_clean</item>
+        <item name="android:textSize">10px</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="level_select_button">
+        <item name="android:textSize">25px</item>
+        <item name="android:layout_width">400px</item>
+        <item name="android:layout_height">300px</item>
+        <item name="android:background">@drawable/default_btn</item>
+    </style>
+
+    <style name="letter_menu_button">
+        <item name="android:textSize">25px</item>
+        <item name="android:layout_width">190px</item>
+        <item name="android:layout_height">190px</item>
+        <item name="android:background">@drawable/default_btn</item>
+        <item name="android:layout_margin">20px</item>
+    </style>
+
+    <style name="letter_game_button">
+        <item name="android:textSize">50px</item>
+        <item name="android:layout_width">400px</item>
+        <item name="android:layout_height">350px</item>
+        <item name="android:background">@drawable/default_btn</item>
+    </style>
 
 </resources>

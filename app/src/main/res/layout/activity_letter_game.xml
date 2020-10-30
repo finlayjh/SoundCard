@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/letter_game_container"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:id="@+id/letter_game_contents"
+        android:layout_width="1080px"
+        android:layout_height="1920px"
+        android:layout_gravity="top">
+
+        <ImageButton
+            android:id="@+id/btn_PlaySound"
+            android:layout_marginTop="100px"
+            android:layout_marginBottom="100px"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="@drawable/shadow_btn"
+            android:padding="20px"
+            android:src="@drawable/sound"
+            android:scaleType="fitCenter"
+            android:onClick="playSound"/>
+
+        <TextView
+            android:id="@+id/tv_win_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50px"
+            android:text="WinCounter"/>
+
+        <Button
+            android:id="@+id/btn_option1"
+            android:layout_marginBottom="150px"
+            android:onClick="checkAnswer"
+            android:text="Default1"
+            android:textAllCaps="false"
+            android:layout_below="@id/btn_PlaySound"
+            android:layout_centerHorizontal="true"
+            style="@style/letter_game_button"/>
+
+        <Button
+            android:id="@+id/btn_option2"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btn_option1"
+            android:layout_marginBottom="150px"
+            android:onClick="checkAnswer"
+            android:text="Default2"
+            android:textAllCaps="false"
+            style="@style/letter_game_button"/>
+
+        <Button
+            android:id="@+id/btn_option3"
+            android:layout_below="@id/btn_option2"
+            android:layout_centerHorizontal="true"
+            android:onClick="checkAnswer"
+            android:text="Default3"
+            android:textAllCaps="false"
+            style="@style/letter_game_button"/>
+    </RelativeLayout>
+</FrameLayout>
