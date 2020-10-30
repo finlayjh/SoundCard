@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/level_select_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+
+
+    <RelativeLayout
+        android:id="@+id/level_select_contents"
+        android:layout_width="1080px"
+        android:layout_height="1920px"
+        android:layout_gravity="top">
+
+        <include
+            android:id="@+id/toolbar_default"
+            layout="@layout/toolbar_default" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_default"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="150px"
+            android:text="student_name"
+            android:textSize="25px"
+            tools:text="user_name" />
+
+        <Button
+            android:id="@+id/btn_ABC"
+            style="@style/level_select_button"
+            android:layout_below="@id/tv_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="200px"
+            android:onClick="loadLetterSelect"
+            android:text="ABC"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_abc"
+            style="@style/level_select_button"
+            android:layout_below="@id/btn_ABC"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="200px"
+            android:onClick="loadLetterSelect"
+            android:text="abc"
+            android:textAllCaps="false"
+            tools:text="abc" />
+
+        <Button
+            android:id="@+id/btn_AaBbCc"
+            style="@style/level_select_button"
+            android:layout_below="@id/btn_abc"
+            android:layout_centerHorizontal="true"
+            android:onClick="loadLetterSelect"
+            android:text="AaBbCc"
+            android:textAllCaps="false"
+            tools:text="AaBbCc" />
+    </RelativeLayout>
+</FrameLayout>

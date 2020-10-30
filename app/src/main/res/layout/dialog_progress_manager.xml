@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_uppercase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Uppercase" />
+
+    <Button
+        android:id="@+id/btn_uppercase_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:onClick="cl"/>
+
+    <Button
+        android:id="@+id/btn_uppercase_advance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Advance" />
+
+    <TextView
+        android:id="@+id/tv_lowercase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lowercase" />
+
+    <Button
+        android:id="@+id/btn_lowercase_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear" />
+
+    <Button
+        android:id="@+id/btn_lowercase_advance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Advance" />
+
+    <TextView
+        android:id="@+id/tv_sounds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Letter Sounds" />
+
+    <Button
+        android:id="@+id/btn_sounds_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear" />
+
+</LinearLayout>

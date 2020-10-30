@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_profile_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/student_profile_contents"
+        android:layout_width="1080px"
+        android:layout_height="1920px"
+        android:layout_gravity="top">
+
+        <include
+            android:id="@+id/toolbar_default"
+            layout="@layout/toolbar_default" />
+
+        <RelativeLayout
+            android:id="@+id/student_info_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_default"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="100px"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textSize="20px" />
+
+            <TextView
+                android:id="@+id/tv_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="150px"
+                android:layout_below="@+id/tv_name"
+                android:textSize="20px"
+                tools:text="Teacher:" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="150px"
+                android:layout_below="@+id/tv_teacher"
+                android:textSize="20px"
+                tools:text="Age:" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="150px"
+                android:layout_below="@+id/tv_age"
+                android:textSize="20px"
+                tools:text="Grade:" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_delete_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="deleteStudentDialog"
+            android:background="@drawable/shadow_btn"
+            android:layout_margin="50px"
+            android:text="delete"
+            android:textSize="20px"/>
+
+        <ImageButton
+            android:id="@+id/btn_edit_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="editStudentDialog"
+            android:background="@drawable/shadow_btn"
+            android:src="@drawable/editicon-export"
+            android:scaleType="fitCenter"
+            android:padding="20px"
+            android:text="Edit"
+            android:textSize="20px"
+            android:layout_margin="50px"/>
+    </RelativeLayout>
+</FrameLayout>
